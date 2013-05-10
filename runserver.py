@@ -7,7 +7,7 @@ import tornado.httpserver
 from tornado.options import define, options
 
 from webgear5 import Application
-from webgear5 import settings
+from webgear5.settings import settings
 
 define("port", default=8080, type=int)
 define("autoreload", default=True, type=bool)

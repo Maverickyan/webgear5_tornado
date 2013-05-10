@@ -4,8 +4,8 @@ import tornado.web
 import tornado.options
 
 from tornado.web import url, StaticFileHandler
-from webgear5.settings import settings, jinja_environment, db, file_db, redis_server
-from webgear5.handlers import home
+from settings import settings, jinja_environment, db, file_db, session_store
+from handlers import home
 
 
 class Application(tornado.web.Application):
@@ -15,7 +15,7 @@ class Application(tornado.web.Application):
             url(r'/static/img/(.+)', StaticFileHandler, dict(path=settings['image_path']), name='images'),
             url(r'/static/js/(.+)', StaticFileHandler, dict(path=settings['js_path']), name='js'),
             url(r'/static/css/(.+)', StaticFileHandler, dict(path=settings['css_path']), name='css'),
-            url(r'/', home.MainHandler, name='topics'),
+            url(r'/', home.MainHandler, name='home'),
         ]
 
         #init jinja2 environment
@@ -30,4 +30,4 @@ class Application(tornado.web.Application):
 
         self.db = db
         self.file_db = file_db
-        self.redis_server = redis_server
+        self.session_store = session_store

@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import os
 import redis
 
 from pymongo import MongoClient
 from jinja2 import Environment, FileSystemLoader
+from extensions.session import RedisSessionStore
 
 root = os.path.dirname(__file__)
 
@@ -32,4 +31,7 @@ jinja_environment = Environment(
 #Database setting
 db = MongoClient('mongodb://localhost:27017')['webgear5']
 file_db = MongoClient('mongodb://localhost:27017')['webgear5']
-redis_server = redis.StrictRedis()
+
+pool = redis.ConnectionPool()
+rdb = redis.StrictRedis(connection_pool=pool)
+session_store = RedisSessionStore(redis_connection=rdb)
