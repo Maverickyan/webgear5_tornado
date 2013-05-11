@@ -24,7 +24,8 @@ settings = dict(
     css_path=os.path.join(root, 'static/css'),
     session_lifetime=7,
     default_avatar_url='/static/img/avatar.jpg',
-    avatar_prefix='/static/img/avatars/%s'
+    avatar_prefix='/static/img/avatars/%s',
+    page_size=50
 )
 
 #Jinja templates setting
