@@ -2,7 +2,7 @@
 #-*- coding: utf-8 -*-
 import tornado.web
 import tornado.locale
-from extensions.session import RedisSession
+from webgear5.extensions.session import RedisSession
 
 
 class BaseHandler(tornado.web.RequestHandler):

@@ -12,9 +12,10 @@ class Application(tornado.web.Application):
     def __init__(self):
 
         handlers = [
-            url(r'/static/img/(.+)', StaticFileHandler, dict(path=settings['image_path']), name='images'),
+            url(r'/static/img/(.+)', StaticFileHandler, dict(path=settings['image_path']), name='image'),
             url(r'/static/js/(.+)', StaticFileHandler, dict(path=settings['js_path']), name='js'),
             url(r'/static/css/(.+)', StaticFileHandler, dict(path=settings['css_path']), name='css'),
+            url(r'/favicon.ico', StaticFileHandler, dict(path=settings['static_path'])),
             url(r'/', home.MainHandler, name='home'),
         ]
 

@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
-import tornado.web
+from webgear5.models import Member
+from webgear5.handlers import BaseHandler
+from webgear5.settings import cache
 
 
-class MainHandler(tornado.web.RequestHandler):
+class MainHandler(BaseHandler):
     def get(self):
-        self.write("Hello, world")
+        member = Member.get_by_username('Maverick')
+        self.set_header('ContentType', 'application/json')
+        self.write(member.json)
